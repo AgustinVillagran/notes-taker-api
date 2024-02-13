@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 1.0.0"
 
   backend "s3" {
-    bucket         = "notes-taker-terraform-state-test-bucket"
+    bucket         = "notes-taker-terraform-state-bucket"
     key            = "terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform-locks-table"

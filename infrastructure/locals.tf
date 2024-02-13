@@ -1,5 +1,5 @@
 locals {
-  bucket_name = "notes-taker-terraform-state-test-bucket"
+  bucket_name = "notes-taker-terraform-state-bucket"
   table_name  = "terraform-locks-table"
 
   ecr_repository_name = "test_app_ecr_repository"
