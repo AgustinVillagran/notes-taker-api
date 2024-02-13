@@ -28,15 +28,15 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: 'test_app_ecr_repository'
-          IMAGE_TAG: latest
+          IMAGE_TAG: ${{ github.sha }}
         run: docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
       - name: Tag the Docker image
         id: tag-image
         env:
-          IMAGE_TAG: latest
+          IMAGE_TAG: ${{ github.sha }}
         run: docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       - name: Push the Docker image to ECR
         id: push-image
         env:
-          IMAGE_TAG: latest
+          IMAGE_TAG: ${{ github.sha }}
         run: docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
